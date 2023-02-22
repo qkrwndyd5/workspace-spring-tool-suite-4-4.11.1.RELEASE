@@ -8,6 +8,10 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
+@Repository(value = "guestDao")
+@Scope(scopeName = "singleton")
 public class GuestDaoImpl implements GuestDao {
 	
 	public GuestDaoImpl() {
