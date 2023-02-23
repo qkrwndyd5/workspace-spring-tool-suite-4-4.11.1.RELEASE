@@ -1,4 +1,4 @@
-package com.itwill.guest;
+package com.itwill.guest.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,13 +13,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class GuestDaoImpl implements GuestDao {
-	@Autowired
+	//@Autowired
 	private DataSource dataSource;
 	
 	public GuestDaoImpl() {
 		System.out.println("2.#### GuestDaoImpl() 기본생성자호출");
 	}
-	
+	@Autowired
 	public GuestDaoImpl(DataSource dataSource) {
 		System.out.println("2.#### GuestDaoImpl(DataSource dataSource) 생성자호출:"+this);
 		this.dataSource = dataSource;
