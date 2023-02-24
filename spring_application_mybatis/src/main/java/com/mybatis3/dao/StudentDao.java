@@ -37,6 +37,16 @@ public class StudentDao {
 		return sqlSession.selectList("findAllStudents");
 	}
 	
+	/***********************************
+	 * INSERT
+	 ***********************************/
+	public int insertStudent(Student student) {
+		return sqlSession.insert("insertStudent", student);
+	}
+
+	public int insertStudentBySequence1(Student student) {
+		return 0;
+	}
 	
 	
 	
@@ -75,16 +85,7 @@ public class StudentDao {
 
 	}
 
-	/***********************************
-	 * INSERT
-	 ***********************************/
-	public int insertStudent(Student student) {
-		return 0;
-	}
-
-	public int insertStudentBySequence1(Student student) {
-		return 0;
-	}
+	
 
 	/*
 	 * sequence실행후 PK return
