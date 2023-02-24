@@ -32,8 +32,8 @@ public class SpringBootJDBCTemplateMain {
 		 * queryForObject[반환타입 Guest]
 		 */
 		String selectDtoSql = "select * from guest where guest_no=?";
-		Object[] paramArray1 = {263};
-		Object[] paramArray2 = new Object[]{263};
+		Object[] paramArray1 = {201};
+		Object[] paramArray2 = new Object[]{201};
 		
 		/*
 		 << BeanPropertyRowMapper 클래스 >>
@@ -57,7 +57,7 @@ public class SpringBootJDBCTemplateMain {
 		*/
 		
 		Guest guest = jdbcTemplate.queryForObject(selectDtoSql,
-												 new Object[]{264},
+												 new Object[]{201},
 												 new int[] {Types.INTEGER},
 												 guestBeanPropertyRowMapper);
 		System.out.println("--> queryForObject[Guest]:"+guest);
@@ -66,7 +66,7 @@ public class SpringBootJDBCTemplateMain {
 		 */
 		String selectStringSql="select guest_name from guest where guest_no=?";
 		String guest_name = jdbcTemplate.queryForObject(selectStringSql,
-														new Object[] {264} ,
+														new Object[] {201} ,
 														new int[] {Types.INTEGER},
 														String.class);
 		System.out.println("--> queryForObject[String]:"+guest_name);
@@ -92,7 +92,7 @@ public class SpringBootJDBCTemplateMain {
 		 * select --> queryForMap 반환타입[Map<String,Object>]
 		 ************************************************************/
 		String selectMapSql="select * from guest where guest_no=?";
-		Map rowMap=jdbcTemplate.queryForMap(selectMapSql,new Object[] {264},new int[] {Types.INTEGER});
+		Map rowMap=jdbcTemplate.queryForMap(selectMapSql,new Object[] {201},new int[] {Types.INTEGER});
 		System.out.println("--> queryForMap 반환타입[Map<String,Object>]:"+rowMap);
 		
 		String selectMapListSql="select * from guest";
@@ -102,17 +102,20 @@ public class SpringBootJDBCTemplateMain {
 		/*****************************************************************
 		 * DML(update,delete,insert) --> update 반환타입[ rowCount(int) ]
 		 *****************************************************************/
+		
 		String insertSql="insert into guest values(guest_no_seq.nextval,?,sysdate,?,?,?,?)";
-		int rowCount = jdbcTemplate.update(insertSql,"빼뺴로","sumi@gmail.com","www.sumi.com","간장게장","만들기..");
+		int rowCount = jdbcTemplate.update(insertSql,"니하오","bobo@gmail.com","www.bobo.com","간장게장","만들기..");
 		System.out.println("insert row count:"+rowCount);
 		
+		
 		String updateSql = "update guest set  guest_name=?, guest_email=?, guest_homepage=?, guest_title=?, guest_content=? where guest_no=?";
-		rowCount=jdbcTemplate.update(updateSql,"처음처렁","umi@umi.com","www.umi.com","새우장","먹기",190);
+		rowCount=jdbcTemplate.update(updateSql,"참이슬","umi@umi.com","www.umi.com","새우장","먹기",447);
 		System.out.println("update row count:"+rowCount);	
 		
 		String deleteSql = "delete from guest where guest_no=?";
-		rowCount=jdbcTemplate.update(deleteSql,193);
+		rowCount=jdbcTemplate.update(deleteSql,461);
 		System.out.println("delete row count:"+rowCount);
+		
 	}
 
 }
