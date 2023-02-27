@@ -13,13 +13,12 @@ public class GuestServiceImpl implements GuestService {
 	public GuestServiceImpl() {
 		System.out.println("1.#### GuestServiceImpl() 기본생성자");
 	}
-	
 	@Autowired
 	public GuestServiceImpl(GuestDao guestDao) {
 		System.out.println("1.#### GuestServiceImpl(GuestDao guestDao) 생성자");
-		this.guestDao = guestDao;
+		this.guestDao=guestDao;
+		
 	}
-
 	
 	@Override
 	public List<Guest> selectAll()throws Exception{

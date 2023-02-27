@@ -26,8 +26,7 @@ public class Guest {
 	private String guestHomepage;
 	private String guestTitle;
 	private String guestContent;
-	
-	
+
 	
 	
 }

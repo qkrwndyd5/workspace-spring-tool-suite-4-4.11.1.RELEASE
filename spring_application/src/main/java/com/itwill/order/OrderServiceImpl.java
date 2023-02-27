@@ -11,9 +11,7 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
 	@Override
 	public List<Order> list() {
-		
 		return orderDao.list();
 	}
-	
 	
 }

@@ -13,12 +13,10 @@ public class UserServiceImpl implements UserService {
 		System.out.println("#### UserServiceImpl() : 디폴트생성자호출");
 
 	}
-	
-	
 	@Autowired
 	@Qualifier(value = "userDao")
 	public void setUserDao(UserDao userDao) {
-		System.out.println("#### UserServiceImpl.setUserDao(ao userDao) : 메쏘드호출");
+		System.out.println("#### UserServiceImpl.setUserDao(UserDao userDao) : 메쏘드호출");
 		this.userDao = userDao;
 	}
 
@@ -27,7 +25,6 @@ public class UserServiceImpl implements UserService {
 	public int create(User user) throws Exception {
 		userDao.create(user);
 		System.out.println("#### UserServiceImpl : create() 호출");
-
 		return 0;
 	}
 

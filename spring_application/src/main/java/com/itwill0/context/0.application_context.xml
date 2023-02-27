@@ -36,6 +36,19 @@
 	<bean id="productService" class="com.itwill.product.ProductServiceImpl">
 		<property name="productDao" ref="productDao"/>
 	</bean>
-	
-	
+
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

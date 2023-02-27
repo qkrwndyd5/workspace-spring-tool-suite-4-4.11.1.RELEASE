@@ -1,4 +1,4 @@
- package com.itwill0.context;
+package com.itwill0.context;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,16 +9,21 @@ import com.itwill.product.ProductService;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.itwill.product")
-public class SpringBootApplicationMain {
+public class SpringbootApplicationMain {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = 
-				SpringApplication.run(SpringBootApplicationMain.class, args);
-		ProductService productService = 
+		System.out.println("-------------ApplicationContext생성시작----------------------------");
+		 ApplicationContext applicationContext= 
+				 SpringApplication.run(SpringbootApplicationMain.class, args);
+		 System.out.println("-------------ApplicationContext생성끝----------------------------");
+		 ProductService productService=
 				(ProductService)applicationContext.getBean("productService");
 		
 		System.out.println(productService.productList());
 		System.out.println(productService.productDetail(2321));
+		
+		
+
 	}
 
 }

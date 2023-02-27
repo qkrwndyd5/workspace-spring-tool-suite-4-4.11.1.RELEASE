@@ -24,7 +24,7 @@ public class GuestDaoImpl implements GuestDao {
 		System.out.println("2.#### GuestDaoImpl(DataSource dataSource) 생성자호출:"+this);
 		this.dataSource = dataSource;
 	}
-	
+	//@Autowired
 	public void setDataSource(DataSource dataSource) {
 		System.out.println("3.#### GuestDaoImpl.setDataSource(DataSource dataSource) 메쏘드호출");
 		this.dataSource = dataSource;

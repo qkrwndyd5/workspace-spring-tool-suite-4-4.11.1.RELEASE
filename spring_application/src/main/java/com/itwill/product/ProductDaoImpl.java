@@ -9,7 +9,7 @@ public class ProductDaoImpl implements ProductDao {
 	private DataSource dataSource;
 	
 	public ProductDaoImpl() {
-		dataSource = new DataSource();
+		dataSource=new DataSource();
 		System.out.println("1.#### PeroductDaoImpl() 생성자:"+this);
 		
 	}

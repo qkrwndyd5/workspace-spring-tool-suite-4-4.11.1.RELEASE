@@ -1,6 +1,5 @@
 package com.itwill.user.dao.jdbctemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface UserDao {
