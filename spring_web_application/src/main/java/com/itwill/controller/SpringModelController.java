@@ -19,7 +19,6 @@ public class SpringModelController {
 	}
 	@RequestMapping("/model_model")
 	public String model(Model model) {
-		
 		/*
 		request.setAttribute("model", "모델데이타");
 		 */
@@ -27,7 +26,7 @@ public class SpringModelController {
 		return "forward:/WEB-INF/views/spring_model.jsp";
 	}
 	@RequestMapping("/model_map")
-	public String map(Map map) {
+	public String map(Map map){
 		System.out.println(map.getClass().getSimpleName());
 		map.put("map", "맵데이타");
 		/*
@@ -46,18 +45,17 @@ public class SpringModelController {
 	
 	@RequestMapping("/model_modelandview")
 	public ModelAndView modelandview() {
-		
 		/*
 		request.setAttribute("modelandview", "모델앤뷰데이타");
 		 */
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.addObject("modelandview", "모델앤뷰데이타");
 		modelAndView.setViewName("forward:/WEB-INF/views/spring_model.jsp");
 		
 		return modelAndView;
 	}
 	@RequestMapping("/model_all")
-	public String model_all(HttpServletRequest request, 
+	public String model_all(HttpServletRequest request,
 							Model model,
 							Map map,
 							ModelMap modelMap) {
