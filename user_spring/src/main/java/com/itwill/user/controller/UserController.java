@@ -52,6 +52,7 @@ public class UserController {
 		String forwardPath = "";
 		return forwardPath;
 	}
+	
 
 	public String user_view() throws Exception {
 		/************** login check **************/
