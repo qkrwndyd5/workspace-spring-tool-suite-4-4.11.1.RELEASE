@@ -26,11 +26,6 @@ public class GuestController {
 		return forwardPath;
 	}
 
-	public String guest_modify_action_get() {
-		String forwardPath = "";
-
-		return forwardPath;
-	}
 
 	public String guest_modify_action() {
 		String forwardPath = "";
@@ -38,11 +33,6 @@ public class GuestController {
 		return forwardPath;
 	}
 
-	public String guest_modify_get() {
-		String forwardPath = "";
-
-		return forwardPath;
-	}
 
 	public String guest_modify_form() {
 		String forwardPath = "";
@@ -83,6 +73,18 @@ public class GuestController {
 		String forwardPath = "";
 		return forwardPath;
 
+	}
+	
+	public String guest_modify_action_get() {
+		String forwardPath = "";
+
+		return forwardPath;
+	}
+	
+	public String guest_modify_get() {
+		String forwardPath = "";
+
+		return forwardPath;
 	}
 
 }
