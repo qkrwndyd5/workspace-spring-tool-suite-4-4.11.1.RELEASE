@@ -7,8 +7,6 @@
 2.request기본 객체로부터 뽑은속성객체 출력
 */
 User loginUser=(User)request.getAttribute("loginUser");
-
-
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,10 +17,9 @@ User loginUser=(User)request.getAttribute("loginUser");
 <link rel=stylesheet href="css/user.css" type="text/css">
 <script type="text/javascript">
 	function userModify() {
-		document.f.action = "user_modify_action.do";
+		document.f.action = "user_modify_action";
 		document.f.submit();
 	}
-
 </script>
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0

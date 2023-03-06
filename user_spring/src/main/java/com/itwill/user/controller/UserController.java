@@ -1,5 +1,6 @@
 package com.itwill.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.itwill.user.PasswordMismatchException;
 import com.itwill.user.User;
+import com.itwill.user.UserNotFoundException;
 import com.itwill.user.UserService;
 import com.itwill.user.exception.ExistedUserException;
 /*
@@ -57,46 +60,95 @@ public class UserController {
 		String forward_path = "user_login_form";
 		return forward_path;
 	}
+	
+	
 	@PostMapping("user_login_action")
-	public String user_login_action(User user) throws Exception {
+	public String user_login_action(@ModelAttribute("fuser") User user,Model model,HttpSession session) throws Exception {
 		String forwardPath = "";
+		try {
+			userService.login(user.getUserId(), user.getPassword());
+			session.setAttribute("sUserId", user.getUserId());
+			forwardPath="redirect:user_main";
+		}catch (UserNotFoundException e) {
+			e.printStackTrace();
+			model.addAttribute("msg1",e.getMessage());
+			forwardPath="user_login_form";
+		}catch (PasswordMismatchException e) {
+			e.printStackTrace();
+			model.addAttribute("msg2",e.getMessage());
+			forwardPath="user_login_form";
+		}
+		return forwardPath;
+	}
+	
+	@LoginCheck
+	@RequestMapping("/user_view")
+	public String user_view(HttpServletRequest request) throws Exception {
+		String forwardPath = "";
+		/************** login check **************/
 		
-		userService.login(user.getUserId(), user.getPassword());
+		/******************************/
+		String sUserId = (String) request.getSession().getAttribute("sUserId");
+		User loginUser = userService.findUser(sUserId);
+		request.setAttribute("loginUser", loginUser);
+		forwardPath="user_view";
+		
+		return forwardPath;
+	}
+
+	@LoginCheck
+	@PostMapping("user_modify_form")
+	public String user_modify_form(HttpServletRequest request) throws Exception {
+		String forwardPath = "";
+		/************** login check **************/
+		
+		/****************************************/
+		String sUserId = (String) request.getSession().getAttribute("sUserId");
+		User loginUser=userService.findUser(sUserId);
+		request.setAttribute("loginUser", loginUser);
+		forwardPath="user_modify_form";
 		
 		return forwardPath;
 	}
 	
-
-	public String user_view() throws Exception {
-		/************** login check **************/
+	@LoginCheck
+	@PostMapping("user_modify_action")
+	public String user_modify_action(@ModelAttribute User user,HttpServletRequest request) throws Exception {
 		String forwardPath = "";
+		/************** login check **************/
+		
+		/****************************************/
+		userService.update(user);
+		forwardPath="redirect:user_view";
 		return forwardPath;
 	}
 
-
-	public String user_modify_form_post() throws Exception {
-		/************** login check **************/
-
+	@LoginCheck
+	@PostMapping("user_remove_action")
+	public String user_remove_action(HttpServletRequest request) throws Exception {
+	
 		String forwardPath = "";
-
+		/************** login check **************/
+		
+		/****************************************/
+		String sUserId = (String) request.getSession().getAttribute("sUserId");
+		userService.remove(sUserId);
+		request.getSession().invalidate();
+		//forwardPath = "forward:user_logout_action";
+		forwardPath = "redirect:user_main";
 		return forwardPath;
 	}
-
-	public String user_modify_action_post() throws Exception {
-		/************** login check **************/
+	
+	@LoginCheck
+	@RequestMapping("user_logout_action")
+	public String user_logout_action(HttpServletRequest request) {
+		
 		String forwardPath = "";
-		return forwardPath;
-	}
-
-	public String user_remove_action_post() throws Exception {
 		/************** login check **************/
-		String forwardPath = "";
-		return forwardPath;
-	}
-
-	public String user_logout_action(HttpSession session) {
-		/************** login check **************/
-		String forwardPath = "";
+		
+		/****************************************/
+		request.getSession(false).invalidate();
+		forwardPath="redirect:user_main";
 		return forwardPath;
 	}
 
