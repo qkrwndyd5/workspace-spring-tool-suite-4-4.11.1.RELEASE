@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  ## JPA Setting Info
+  jpa:
+    hibernate:
+      ddl-auto: create  # option type: create, create-drop, update, validate, none
+    properties:
+      hibernate:
+        show-sql: true  
+        format-sql: true # sql query formatting
+        use-sql-comments: true  # sql 쿼리의 추가정보를 보여줍니다.
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: jdeveloper60
+    password: jdeveloper60
+    url: jdbc:oracle:thin:@182.237.126.19:1521:XE
+  sql:
+    init:
+      platform: org.hibernate.dialect.Oracle10gDialect
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        beans: debug
+        context: debug
+        web: debug
+      hibernate:
+        type:
+          descriptor:
+            sql: trace  # query의 ?에 어떤 값이 들어가는지 추적할 수 있는 설정입니다. TRACE Log에 값을 보여줍니다.
